@@ -11,6 +11,6 @@ public interface Rentable extends Comparable<Rentable> {
 
     @Override
     default int compareTo(Rentable o) {
-        return 0;
+        return getRentingTime().compareTo(o.getRentingTime());
     }
 }
