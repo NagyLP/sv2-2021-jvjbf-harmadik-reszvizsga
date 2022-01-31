@@ -31,7 +31,7 @@ public class MovieTheatreService {
         if (!shows.containsKey(parts[0])) {
             shows.put(parts[0], new ArrayList<>());
         }
-        shows.get(parts[0]).add(new Movie(partsTwoo[0], LocalTime.parse(parts[1])));
+        shows.get(parts[0]).add(new Movie(partsTwoo[0], LocalTime.parse(partsTwoo[1])));
         shows.get(parts[0]).sort(Comparator.comparing(Movie::getStartTime));
     }
 }
