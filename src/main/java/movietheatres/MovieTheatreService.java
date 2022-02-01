@@ -26,12 +26,16 @@ public class MovieTheatreService {
     }
 
     private void parseLine(String item) {
-        String[] parts = item.split("-");
-        String[] partsTwoo = parts[1].split(";");
+// Sikeres vizsgát, és vizsgafeladat koznultációt követően KIEG:
+        String[] parts = item.split("[-;]");
+//        String[] parts = item.split("-");
+//        String[] partsTwoo = parts[1].split(";");
         if (!shows.containsKey(parts[0])) {
             shows.put(parts[0], new ArrayList<>());
         }
-        shows.get(parts[0]).add(new Movie(partsTwoo[0], LocalTime.parse(partsTwoo[1])));
+//        -- || -- KIEG: .....
+//        shows.get(parts[0]).add(new Movie(parts[0], LocalTime.parse(partsTwoo[0])));
+        shows.get(parts[0]).add(new Movie(parts[1], LocalTime.parse(parts[2])));
         shows.get(parts[0]).sort(Comparator.comparing(Movie::getStartTime));
     }
 }
